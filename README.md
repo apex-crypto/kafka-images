@@ -1,3 +1,20 @@
+PEAK 6 ARM 64 Kafka builds
+
+[Build the common-docker image first](https://github.com/apex-crypto/common-docker/blob/6.2.1-for-m1/README.md)
+
+Then build this image
+
+```
+mvn clean package \
+  -DskipTests -Pdocker \
+  -DCONFLUENT_PACKAGES_REPO='https://packages.confluent.io/rpm/6.2' \
+  -DCONFLUENT_VERSION=6.2.1 \
+  -Ddocker.registry=efabens/
+```
+
+The image will now be in your local docker repository and can be used as needed, such as like by test-container
+
+
 # Docker images for Apache Kafka
 
 This repo provides build files for [Apache Kafka](https://www.confluent.io/what-is-apache-kafka/) and Confluent Docker images. The images can be found on [Docker Hub](https://hub.docker.com/u/confluentinc/), and sample Docker Compose files [here](examples).
